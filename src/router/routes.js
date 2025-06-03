@@ -1,18 +1,28 @@
+import HomePage from 'pages/HomePage.vue'
+import About from 'pages/About.vue'
+import ContactsPage from 'pages/Contacts.vue'
+
 const routes = [
+  {
+    path: '/login',
+    component: () => import('pages/Login.vue'),
+  },
+
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
+    meta: { requiresAuth: true },
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }
-    ]
+      { path: '', component: HomePage },
+      { path: 'about', component: About },
+      { path: 'contacts', component: ContactsPage },
+    ],
   },
 
-  // Always leave this as last one,
-  // but you can also remove it
   {
     path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue')
-  }
+    component: () => import('pages/ErrorNotFound.vue'),
+  },
 ]
 
 export default routes

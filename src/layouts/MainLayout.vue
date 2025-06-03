@@ -14,8 +14,11 @@
         <q-toolbar-title>
           Quasar App
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <div>
+          <q-btn flat label="Главная" to="/" />
+          <q-btn flat label="О нас" to="/about" />
+          <q-btn flat label="Контакты" to="/contacts" />
+        </div>
       </q-toolbar>
     </q-header>
 
